@@ -7,10 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import ContactUsForm from "./emailForms/contactUs";
 import AuditForm from "./emailForms/auditService";
 import Link from "next/link";
-import Image from "next/image";
-import { a } from "framer-motion/client";
 import Marquee from "./ui/marquee";
-import { title } from "process";
 
 export default function DesishubLanding() {
   const fadeIn = {
@@ -297,7 +294,7 @@ export default function DesishubLanding() {
           <p>&copy; {currentYear} Desishub. All rights reserved.</p>
         </motion.footer>
       </div>
-      <Link href="">
+      {/* <Link href="">
         <Image
           width={281}
           height={281}
@@ -305,7 +302,7 @@ export default function DesishubLanding() {
           src="/what.png"
           alt="logo"
         />
-      </Link>
+      </Link> */}
     </div>
   );
 }

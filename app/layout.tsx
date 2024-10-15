@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import DarkAlertMessage from "@/components/alertMessage";
 
 export const metadata: Metadata = {
   title: "landing page",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html className="scroll-bahavior body-font" lang="en">
       <Toaster position="top-right" reverseOrder={false} />
-      <body className="body-font">{children}</body>
+      <body className="body-font">
+        <DarkAlertMessage />
+        <main> {children}</main>
+      </body>
     </html>
   );
 }
