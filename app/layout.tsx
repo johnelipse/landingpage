@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html className="scroll-bahavior" lang="en">
       <body className="body-font">{children}</body>
     </html>
   );

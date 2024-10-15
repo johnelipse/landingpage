@@ -71,6 +71,10 @@
   font-family: "Outfit", serif;
 }
 
+.scroll-bahavior {
+  scroll-behavior: smooth;
+}
+
 @media (max-width: 768px) {
   .display {
     display: none;
