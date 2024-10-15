@@ -6,6 +6,8 @@ import { Send } from "lucide-react";
 import TextInput from "../formInputs/textInput";
 import TextArea from "../formInputs/textArea";
 import SubmitButton from "../formInputs/submitButton";
+import { sendMessageToSingleMail } from "@/actions/email";
+import toast from "react-hot-toast";
 export type EmailProps = {
   name: string;
   email: string;
@@ -24,22 +26,21 @@ export default function AuditForm() {
 
   async function submit(data: EmailProps) {
     console.log(data);
-    // setLoading(true);
-    // try {
-    //   const result = await sendArticleToSingleMail(data);
-    //   if(result && result.status ===200){
-    //     toast.success(result.message);
-    //     reset();
-    //   }else if(result && result.status ===403){
-    //     throw new Error(result.message);
-    //   }
-
-    // } catch (error) {
-    //   console.error(error);
-    //   toast.error("Failed to send email. Please try again.");
-    // } finally {
-    //   setLoading(false);
-    // }
+    setLoading(true);
+    try {
+      const result = await sendMessageToSingleMail(data);
+      if (result && result.status === 200) {
+        toast.success(result.message);
+        reset();
+      } else if (result && result.status === 403) {
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send email. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (

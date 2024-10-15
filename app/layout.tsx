@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,6 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className="scroll-bahavior" lang="en">
+      <Toaster position="top-right" reverseOrder={false} />
       <body className="body-font">{children}</body>
     </html>
   );
