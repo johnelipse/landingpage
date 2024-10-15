@@ -9,6 +9,8 @@ import AuditForm from "./emailForms/auditService";
 import Link from "next/link";
 import Image from "next/image";
 import { a } from "framer-motion/client";
+import Marquee from "./ui/marquee";
+import { title } from "process";
 
 export default function DesishubLanding() {
   const fadeIn = {
@@ -43,6 +45,54 @@ export default function DesishubLanding() {
       link: "/",
     },
   ];
+
+  const services = [
+    {
+      title: "Business Websites",
+      description:
+        "Tailored for professional online presence, enhancing credibility and attracting potential clients effectively.",
+    },
+    {
+      title: "E-commerce Platforms",
+      description:
+        "User-friendly online stores optimized for seamless product listing, purchasing, and customer management.",
+    },
+    {
+      title: "Landing Pages",
+      description:
+        "Focused, high-converting pages designed for marketing campaigns to capture leads or promote offers.",
+    },
+    {
+      title: "Blogs and Content Websites",
+      description:
+        "Platforms for publishing articles, news, and media, fostering engagement and driving organic traffic.",
+    },
+    {
+      title: "Portfolio Sites",
+      description:
+        "Personal or business portfolios showcasing work, skills, and achievements to attract potential clients.",
+    },
+  ];
+
+  const process = [
+    {
+      title: "Subscribe",
+      description:
+        " Users stay updated with the latest offerings, news, or services through timely notifications.",
+    },
+    {
+      title: "Request",
+      description:
+        "Clients can easily submit inquiries or service requests, ensuring personalized responses and support.",
+    },
+    {
+      title: "Build",
+      description:
+        "The process of creating tailored digital solutions, transforming ideas into fully functional online platforms.",
+    },
+  ];
+
+  const currentYear = new Date().getFullYear();
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
@@ -107,20 +157,22 @@ export default function DesishubLanding() {
               Our process
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {["Subscribe", "Request", "Build"].map((step, index) => (
-                <motion.div
-                  key={step}
-                  className="border border-gray-800 rounded-lg p-6 hover:border-green-400 transition-colors"
-                  variants={fadeIn}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <div className="text-green-400 mb-4">{`0${index + 1}`}</div>
-                  <h3 className="text-xl font-semibold mb-2">{step}</h3>
-                  <p className="text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </motion.div>
-              ))}
+              {process.map((process, i) => {
+                return (
+                  <motion.div
+                    key={i}
+                    className="border border-gray-800 rounded-lg py-1 px-3 hover:border-green-400 transition-colors"
+                    variants={fadeIn}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="text-green-400 mb-2">{`0${i + 1}`}</div>
+                    <h3 className="text-xl font-semibold mb-1">
+                      {process.title}
+                    </h3>
+                    <p className="text-gray-400">{process.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.section>
 
@@ -166,31 +218,29 @@ export default function DesishubLanding() {
             <motion.h2 className="text-3xl font-bold mb-8" {...fadeIn}>
               Our Services Include:
             </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                "Business Websites",
-                "E-commerce Platforms",
-                "Landing Pages",
-                "Blogs and Content Websites",
-                "Portfolio Sites",
-              ].map((service, index) => (
-                <motion.div
-                  key={service}
-                  className="border border-gray-800 rounded-lg p-6 hover:border-orange-400 transition-colors"
-                  variants={fadeIn}
-                  whileHover={{ scale: 1.05, borderColor: "#f97316" }}
-                >
-                  <h3 className="text-xl font-semibold mb-2">{service}</h3>
-                  <p className="text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </motion.div>
-              ))}
+            <div className="flex max-w-6xl mx-auto flex-col items-center justify-center">
+              <Marquee pauseOnHover className="[--duration:20s] ">
+                {services.map((service, i) => {
+                  return (
+                    <motion.div
+                      key={i}
+                      className="border w-[20rem] border-gray-800 rounded-lg py-2 px-4 hover:border-orange-400 transition-colors"
+                      variants={fadeIn}
+                      whileHover={{ scale: 1.05, borderColor: "#f97316" }}
+                    >
+                      <h3 className="text-xl font-semibold mb-1">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-400">{service.description}</p>
+                    </motion.div>
+                  );
+                })}
+              </Marquee>
             </div>
           </motion.section>
 
           <motion.section
-            className="mb-12 mx-auto max-w-sm"
+            className="mb-12 mx-auto max-w-md"
             id="contactUs"
             initial="initial"
             animate="animate"
@@ -237,7 +287,7 @@ export default function DesishubLanding() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
         >
-          <p>&copy; 2024 Desishub. All rights reserved.</p>
+          <p>&copy; {currentYear} Desishub. All rights reserved.</p>
         </motion.footer>
       </div>
       <Link href="">
