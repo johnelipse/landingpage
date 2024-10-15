@@ -95,8 +95,8 @@ export default function DesishubLanding() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen body-font bg-black text-white font-sans">
+      <div className="container body-font mx-auto px-4 py-8">
         <motion.header
           className="flex justify-between items-center lg:mb-16 md:mb-16 mb-8"
           initial={{ opacity: 0, y: -20 }}
@@ -125,7 +125,11 @@ export default function DesishubLanding() {
         </motion.header>
 
         <main>
-          <motion.section id="about" className="text-center mb-12" {...fadeIn}>
+          <motion.section
+            id="about"
+            className="text-center body-font mb-12"
+            {...fadeIn}
+          >
             <h1 className="lg:text-6xl md:text-3xl text-2xl font-bold mb-6 relative inline-block">
               Driving growth with
               <motion.span
@@ -148,12 +152,15 @@ export default function DesishubLanding() {
           </motion.section>
 
           <motion.section
-            className="mb-12"
+            className="mb-12 body-font"
             variants={staggerChildren}
             initial="initial"
             animate="animate"
           >
-            <motion.h2 className="text-3xl font-bold mb-8" {...fadeIn}>
+            <motion.h2
+              className="text-3xl body-font font-bold mb-8"
+              {...fadeIn}
+            >
               Our process
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -209,7 +216,7 @@ export default function DesishubLanding() {
           </motion.section>
 
           <motion.section
-            className="mb-12"
+            className="mb-12 body-font"
             variants={staggerChildren}
             id="services"
             initial="initial"
@@ -240,7 +247,7 @@ export default function DesishubLanding() {
           </motion.section>
 
           <motion.section
-            className="mb-12 mx-auto max-w-md"
+            className="mb-12 body-font mx-auto max-w-md"
             id="contactUs"
             initial="initial"
             animate="animate"
@@ -282,7 +289,7 @@ export default function DesishubLanding() {
         </main>
 
         <motion.footer
-          className="text-center text-gray-400"
+          className="text-center text-gray-400 body-font"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
