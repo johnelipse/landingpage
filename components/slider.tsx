@@ -39,7 +39,7 @@ export default function SliderComp() {
               alt="loading"
             />
             <Link
-              href="/"
+              href="#contactUs"
               className="absolute py-2 px-4 bottom-0 left-0 w-full  bg-[#f59e0b] text-white font-semibold flex items-center gap-1"
             >
               Explore Now
@@ -56,7 +56,7 @@ export default function SliderComp() {
               alt="loading"
             />
             <Link
-              href="/"
+              href="#contactUs"
               className="absolute py-2 px-4 bottom-0 left-0 w-full  bg-[#f59e0b] text-white font-semibold flex items-center gap-1"
             >
               Explore Now
@@ -73,7 +73,7 @@ export default function SliderComp() {
               alt="loading"
             />
             <Link
-              href="/"
+              href="#contactUs"
               className="absolute py-2 px-4 bottom-0 left-0 w-full  bg-[#f59e0b] text-white font-semibold flex items-center gap-1"
             >
               Explore Now
@@ -90,7 +90,7 @@ export default function SliderComp() {
               alt="loading"
             />
             <Link
-              href="/"
+              href="#contactUs"
               className="absolute py-2 px-4 bottom-0 left-0 w-full  bg-[#f59e0b] text-white font-semibold flex items-center gap-1"
             >
               Explore Now
@@ -107,7 +107,7 @@ export default function SliderComp() {
               alt="loading"
             />
             <Link
-              href="/"
+              href="#contactUs"
               className="absolute py-2 px-4 bottom-0 left-0 w-full  bg-[#f59e0b] text-white font-semibold flex items-center gap-1"
             >
               Explore Now
