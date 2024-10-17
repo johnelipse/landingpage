@@ -3,7 +3,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <div>
+    <div className="max-w-4xl mx-auto">
       <DesishubLanding />
     </div>
   );

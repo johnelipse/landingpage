@@ -1,6 +1,6 @@
 export function sendNewsletterEmail(
   name: string,
-  subject: string,
+  websiteType: string,
   message: string
 ) {
   const link = process.env.NEXT_PUBLIC_BASE_URL;
@@ -11,7 +11,7 @@ export function sendNewsletterEmail(
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${subject}</title>
+        <title>${websiteType}</title>
         <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; }
             .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
@@ -28,11 +28,11 @@ export function sendNewsletterEmail(
     <body>
         <div class="container">
             <div class="header">
-                <h1 style="color: #ffffff; margin: 0;">WEB DEV INQUIRIES</h1>
+                <h1 style="color: #ffffff; margin: 0;">${websiteType}</h1>
             </div>
             <div class="content">
                 <h2 style="color: #333333;">${name}</h2>
-                <p style="color: #666666;">${subject}</p>
+                <p style="color: #666666;">${websiteType}</p>
                 <div style="margin-bottom: 20px;">
                     ${message}
                 </div>

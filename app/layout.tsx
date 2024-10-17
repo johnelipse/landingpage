@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html className="scroll-bahavior body-font" lang="en">
       <Toaster position="top-right" reverseOrder={false} />
-      <body className="body-font">
+      <body className="body-font bg-black">
         <DarkAlertMessage />
         <main> {children}</main>
       </body>

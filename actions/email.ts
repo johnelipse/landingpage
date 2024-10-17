@@ -8,7 +8,7 @@ import { Resend } from "resend";
 export type MailDataProps = {
   name: string;
   email: string;
-  subject: string;
+  websiteType: string;
   message: string;
 };
 export type EmailProps = {
@@ -21,8 +21,7 @@ export type EmailProps = {
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendArticleToSingleMail(data: MailDataProps) {
-  const { name, email, subject, message } = data;
-  console.log(name, email, subject, message, `this is the data`);
+  const { name, email, websiteType, message } = data;
 
   try {
     // Send welcome email
@@ -31,8 +30,8 @@ export async function sendArticleToSingleMail(data: MailDataProps) {
     const res = await resend.emails.send({
       from: `${data.email} <info@kyaja.com>`,
       to: "johnelipse472@gmail.com",
-      subject: data.subject,
-      html: sendNewsletterEmail(name, subject, message),
+      subject: data.websiteType,
+      html: sendNewsletterEmail(name, websiteType, message),
     });
     console.log(res);
     revalidatePath("/");
