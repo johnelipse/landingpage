@@ -1,6 +1,8 @@
 export function sendNewsletterEmail(
   name: string,
-  websiteType: string,
+  email: string,
+  service: string,
+  budgetRange: string,
   message: string
 ) {
   const link = process.env.NEXT_PUBLIC_BASE_URL;
@@ -11,7 +13,7 @@ export function sendNewsletterEmail(
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${websiteType}</title>
+        <title>Web Development Services</title>
         <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; }
             .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
@@ -28,17 +30,20 @@ export function sendNewsletterEmail(
     <body>
         <div class="container">
             <div class="header">
-                <h1 style="color: #ffffff; margin: 0;">${websiteType}</h1>
-            </div>
-            <div class="content">
-                <h2 style="color: #333333;">${name}</h2>
-                <p style="color: #666666;">${websiteType}</p>
-                <div style="margin-bottom: 20px;">
+                <h1 style="color: #ffffff; margin: 0;">Web Development Services</h1>
+                </div>
+                <div class="content">
+                <h3 style="color: #171719ff; margin: 0;">Name: ${name}</h3>
+                <h3 style="color: #171719ff; margin: 0;">Email: ${email}</h3>
+                <h3 style="color: #333333;">Service:  ${service}</h3>
+                <h3 style="color: #666666;">Bubget range:  ${budgetRange}</h3>
+                <div style="margin-bottom: 20px; disply:flex; flex-direction:column; gap:0.5rem;">
+                <p>Message:<p>
                     ${message}
                 </div>
             </div>
             <div class="footer">
-                <p style="margin: 0; color: #666666; font-size: 14px;">Thank you for contacting me</p>
+                <p style="margin: 0; color: #666666; font-size: 14px;">Web Development Services</p>
                 <p style="margin: 10px 0 0; color: #666666; font-size: 12px;">&copy; 
                 ${currentYear} Your <a href=${link}>landing page<a/>. All rights reserved.</p>
             </div>

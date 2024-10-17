@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState, FormEvent } from "react";
@@ -27,6 +28,9 @@ import {
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { sendArticleToMultipleMails } from "@/actions/email";
+import toast from "react-hot-toast";
+import { Loader } from "lucide-react";
 
 const images = ["/images/1.webp", "/images/2.webp"];
 
@@ -65,8 +69,9 @@ export default function Component() {
   const handleSelectChange = (name: string) => (value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
@@ -81,16 +86,28 @@ export default function Component() {
     }
 
     console.log("Form data ready to be sent to API:", formData);
-
-    setIsModalOpen(false);
-
-    setFormData({
-      name: "",
-      email: "",
-      service: "web-design",
-      budgetRange: "0-1000",
-      message: "",
-    });
+    setLoading(true);
+    try {
+      const result = await sendArticleToMultipleMails(formData);
+      if (result && result.status === 200) {
+        toast.success(result.message);
+        setFormData({
+          name: "",
+          email: "",
+          service: "web-design",
+          budgetRange: "0-1000",
+          message: "",
+        });
+      } else if (result && result.status === 403) {
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send email. Please try again.");
+    } finally {
+      setLoading(false);
+      setIsModalOpen(false);
+    }
   };
 
   return (
@@ -131,7 +148,7 @@ export default function Component() {
               Contact Us
             </DialogTitle>
             <DialogDescription className="text-purple-600">
-              Fill in your details and we'll get back to you as soon as
+              Fill in your details and we{"'"}ll get back to you as soon as
               possible.
             </DialogDescription>
           </DialogHeader>
@@ -225,12 +242,23 @@ export default function Component() {
                 className="border-purple-300 focus:border-purple-500"
               />
             </div>
-            <Button
-              type="submit"
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-            >
-              Submit
-            </Button>
+            {loading ? (
+              <Button
+                disabled
+                type="submit"
+                className="w-full flex gap-2 items-center bg-purple-600 hover:bg-purple-700 text-white"
+              >
+                <Loader className="animate-spin w-4 h-4" />
+                Submit
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+              >
+                Submit
+              </Button>
+            )}
           </form>
         </DialogContent>
       </Dialog>
