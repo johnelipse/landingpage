@@ -23,7 +23,7 @@ export async function sendArticleToMultipleMails(formData: MailDataProps) {
     // Send email to business owner
     const ownerRes = await resend.emails.send({
       from: `${email} <info@kyaja.com>`,
-      to: "johnelipse472@gmail.com",
+      to: "jb@desishub.com",
       subject: `New Website Request: ${service}`,
       html: sendNewsletterEmail(name, email, service, budgetRange, message),
     });
