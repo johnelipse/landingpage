@@ -28,11 +28,13 @@ export function sendClientEmail(name: string, service: string) {
               </div>
               <div class="content">
                   <div style="margin-bottom: 20px;">
-                    Dear, ${name}
-                      Thank you for reaching out to DesisHub! We're excited to assist you with 
-                      ${service} and appreciate the opportunity to work together. Our team will review your request and get back to you with the next steps shortly.
-                      If you have any questions or need further details in the meantime, feel free to let us know.
-                      Looking forward to working with you!
+                   <p>Dear, ${name}</p>
+                      <p> Thank you for reaching out to DesisHub! We're excited to assist you with. </p> 
+                      
+                      <p>${service} and appreciate the opportunity to work together. </p>
+                      <p>Our team will review your request and get back to you with the next steps shortly.</p>
+                      <p>If you have any questions or need further details in the meantime, feel free to let us know.</p>
+                      <p>Looking forward to working with you!</p>
                   </div>
               </div>
               <div class="footer">
